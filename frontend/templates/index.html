@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Home Page{% endblock %}
+
+{% block pageContent %}
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+
+            <div class="row">
+
+                {% if shoes | length > 0 %}
+                    {% for shoe in shoes.result %}
+
+                        {% set url = "/shoe/" + shoe.slug %}
+                        {% set shoe_cover = "images/" + shoe.image %}
+                        <div class="col-md-3">
+                            <div class="card mb-4 box-shadow">
+                                <img class="card-img-top"
+                                     alt="" style="width: 100%; display: block;"
+                                     src="{{ url_for('static', filename=shoe_cover) }}"
+                                     data-holder-rendered="true">
+                                <div class="card-body">
+                                    <p class="card-text">Price: {{ shoe.price }} $</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <a href="{{ url }}" class="btn btn-sm btn-outline-secondary">View Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <strong>No shoes found.</strong>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
