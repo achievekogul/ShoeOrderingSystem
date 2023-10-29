@@ -1,0 +1,1 @@
+The core practical use case of the application is an e-commerce platform that allows users to view and purchase products (shoes) and manage their orders. The application supports the below following basic SOC capabilities
